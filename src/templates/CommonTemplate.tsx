@@ -1,11 +1,13 @@
+import { Gnb } from 'components/Gnb';
+import { Snb } from 'components/Snb';
 import { ReactNode } from 'react';
-import { GNB } from '../components/GNB';
 
 export function CommonTemplate({ children }: { children: ReactNode }) {
 	return (
-		<div className=''>
-			<GNB />
+		<div className='flex'>
+			<Gnb />
 			{children}
+			<Snb selectedIdx={0}/>
 		</div>
 	);
 }

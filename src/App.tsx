@@ -1,14 +1,19 @@
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { SettingPage } from './pages/SettingPage';
 import { PathName } from './config/pathname';
+import { SettingPage } from './pages/SettingPage';
 
 function App() {
-  return (
-    <Routes>
-      <Route path={PathName.setting} element={<SettingPage/>}/>
-    </Routes>
-  );
+	return (
+		<BrowserRouter>
+			<Routes>
+				<Route
+					path={PathName.setting}
+					element={<SettingPage />}
+				/>
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;
