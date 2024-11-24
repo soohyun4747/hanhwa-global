@@ -32,7 +32,13 @@ const SnbMenus = [
 	},
 ];
 
-export function Snb({ selectedIdx }: { selectedIdx: number }) {
+export function Snb({
+	selectedIdx,
+	setMenuIdx,
+}: {
+	selectedIdx: number;
+	setMenuIdx: React.Dispatch<React.SetStateAction<number>>;
+}) {
 	return (
 		<div className='bg-[#FBFBFB] w-[400px] flex flex-col pt-[70px] gap-[80px] h-[100vh] border-r border-gray-200'>
 			<div className='pl-[40px] text-[40px] font-bold text-gray-800'>
@@ -41,6 +47,8 @@ export function Snb({ selectedIdx }: { selectedIdx: number }) {
 			<div className='flex flex-col gap-[20px] px-[20px] w-full'>
 				{SnbMenus.map((menu, i) => (
 					<div
+						key={i}
+						onClick={() => setMenuIdx(i)}
 						className={`font-semibold text-[28px] h-[92px] w-full pl-[28px] flex gap-[20px] rounded-[12px] items-center ${
 							selectedIdx === i ? 'bg-[#262626]' : 'bg-none'
 						}`}>

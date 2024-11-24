@@ -1,3 +1,3 @@
 export const PathName = {
-	setting: '/setting',
+	main: '/',
 };

@@ -1,18 +1,21 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { PathName } from './config/pathname';
-import { SettingPage } from './pages/SettingPage';
+import { MainPage } from './pages/MainPage';
+import { RecoilRoot } from 'recoil';
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route
-					path={PathName.setting}
-					element={<SettingPage />}
-				/>
-			</Routes>
-		</BrowserRouter>
+		<RecoilRoot>
+			<BrowserRouter>
+				<Routes>
+					<Route
+						path={PathName.main}
+						element={<MainPage />}
+					/>
+				</Routes>
+			</BrowserRouter>
+		</RecoilRoot>
 	);
 }
 

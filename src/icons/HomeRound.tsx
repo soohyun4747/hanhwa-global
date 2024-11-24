@@ -7,65 +7,18 @@ export function HomeRound({
 }) {
 	return (
 		<div
-			className={className}
+			className={`w-[100px] h-[100px] flex items-center justify-center bg-white shadow-home rounded-full ${className}`}
 			onClick={onClick}>
 			<svg
-				width='140'
-				height='140'
-				viewBox='0 0 140 140'
-				fill='none'
-				xmlns='http://www.w3.org/2000/svg'>
-				<g filter='url(#filter0_d_1523_32124)'>
-					<circle
-						cx='70'
-						cy='70'
-						r='49.5'
-						fill='white'
-						stroke='#C4C4C4'
-					/>
-					<path
-						d='M57.25 88C56.0812 88 55.0811 87.5975 54.2495 86.7925C53.4165 85.9861 53 85.0171 53 83.8857V65.3714C53 64.72 53.1509 64.1029 53.4526 63.52C53.753 62.9371 54.1688 62.4571 54.7 62.08L67.45 52.8229C67.8396 52.5486 68.2469 52.3429 68.6719 52.2057C69.0969 52.0686 69.5396 52 70 52C70.4604 52 70.9031 52.0686 71.3281 52.2057C71.7531 52.3429 72.1604 52.5486 72.55 52.8229L85.3 62.08C85.8312 62.4571 86.2477 62.9371 86.5495 63.52C86.8498 64.1029 87 64.72 87 65.3714V83.8857C87 85.0171 86.5842 85.9861 85.7526 86.7925C84.9196 87.5975 83.9187 88 82.75 88H76.25C75.1454 88 74.25 87.1046 74.25 86V75.6C74.25 74.4954 73.3546 73.6 72.25 73.6H67.75C66.6454 73.6 65.75 74.4954 65.75 75.6V86C65.75 87.1046 64.8546 88 63.75 88H57.25Z'
-						fill='black'
-					/>
-				</g>
-				<defs>
-					<filter
-						id='filter0_d_1523_32124'
-						x='0'
-						y='0'
-						width='140'
-						height='140'
-						filterUnits='userSpaceOnUse'
-						color-interpolation-filters='sRGB'>
-						<feFlood
-							flood-opacity='0'
-							result='BackgroundImageFix'
-						/>
-						<feColorMatrix
-							in='SourceAlpha'
-							type='matrix'
-							values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-							result='hardAlpha'
-						/>
-						<feOffset />
-						<feGaussianBlur stdDeviation='10' />
-						<feColorMatrix
-							type='matrix'
-							values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0'
-						/>
-						<feBlend
-							mode='normal'
-							in2='BackgroundImageFix'
-							result='effect1_dropShadow_1523_32124'
-						/>
-						<feBlend
-							mode='normal'
-							in='SourceGraphic'
-							in2='effect1_dropShadow_1523_32124'
-							result='shape'
-						/>
-					</filter>
-				</defs>
+				xmlns='http://www.w3.org/2000/svg'
+				width='34'
+				height='36'
+				viewBox='0 0 34 36'
+				fill='none'>
+				<path
+					d='M4.25 36C3.08125 36 2.08108 35.5975 1.2495 34.7925C0.4165 33.9861 0 33.0171 0 31.8857V13.3714C0 12.72 0.150875 12.1029 0.452625 11.52C0.752958 10.9371 1.16875 10.4571 1.7 10.08L14.45 0.822857C14.8396 0.548572 15.2469 0.342857 15.6719 0.205714C16.0969 0.0685712 16.5396 0 17 0C17.4604 0 17.9031 0.0685712 18.3281 0.205714C18.7531 0.342857 19.1604 0.548572 19.55 0.822857L32.3 10.08C32.8312 10.4571 33.2477 10.9371 33.5495 11.52C33.8498 12.1029 34 12.72 34 13.3714V31.8857C34 33.0171 33.5842 33.9861 32.7526 34.7925C31.9196 35.5975 30.9187 36 29.75 36H23.25C22.1454 36 21.25 35.1046 21.25 34V23.6C21.25 22.4954 20.3546 21.6 19.25 21.6H14.75C13.6454 21.6 12.75 22.4954 12.75 23.6V34C12.75 35.1046 11.8546 36 10.75 36H4.25Z'
+					fill='black'
+				/>
 			</svg>
 		</div>
 	);

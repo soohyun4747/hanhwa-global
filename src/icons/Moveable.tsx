@@ -1,0 +1,49 @@
+export function Moveable({ className }: { className?: string }) {
+	return (
+		<div className={`px-[11px] py-[6px]${className}`}>
+			<svg
+				width='40'
+				height='40'
+				viewBox='0 0 40 40'
+				fill='none'
+				xmlns='http://www.w3.org/2000/svg'>
+				<circle
+					cx='13.5'
+					cy='8.5'
+					r='2.5'
+					fill='#434343'
+				/>
+				<circle
+					cx='26.5'
+					cy='8.5'
+					r='2.5'
+					fill='#434343'
+				/>
+				<circle
+					cx='13.5'
+					cy='19.5'
+					r='2.5'
+					fill='#434343'
+				/>
+				<circle
+					cx='26.5'
+					cy='19.5'
+					r='2.5'
+					fill='#434343'
+				/>
+				<circle
+					cx='13.5'
+					cy='30.5'
+					r='2.5'
+					fill='#434343'
+				/>
+				<circle
+					cx='26.5'
+					cy='30.5'
+					r='2.5'
+					fill='#434343'
+				/>
+			</svg>
+		</div>
+	);
+}

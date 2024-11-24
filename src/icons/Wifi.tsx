@@ -1,94 +1,25 @@
 export function Wifi({
-	className,
-	onClick,
+	fill,
+	width,
+	height,
 }: {
-	className?: string;
-	onClick?: () => void;
+	fill?: string;
+	width?: number | string;
+	height?: number | string;
 }) {
 	return (
-		<div
-			className={className}
-			onClick={onClick}>
-			<svg
-				width='80'
-				height='80'
-				viewBox='0 0 80 80'
-				fill='none'
-				xmlns='http://www.w3.org/2000/svg'>
-				<g clip-path='url(#clip0_1523_32137)'>
-					<g filter='url(#filter0_d_1523_32137)'>
-						<g clip-path='url(#clip1_1523_32137)'>
-							<path
-								d='M31.385 42.6242C33.67 40.403 36.7688 39.1552 40 39.1552C43.2312 39.1552 46.33 40.403 48.615 42.6242M24 35.4443C32.8355 26.8519 47.1622 26.8519 56 35.4443M41.2301 49.8041L40 51L38.7699 49.8041C39.0963 49.4872 39.5387 49.3092 40 49.3092C40.4613 49.3092 40.9037 49.4872 41.2301 49.8041Z'
-								stroke='#262626'
-								stroke-width='4'
-								stroke-linecap='round'
-								stroke-linejoin='round'
-							/>
-						</g>
-					</g>
-				</g>
-				<defs>
-					<filter
-						id='filter0_d_1523_32137'
-						x='-6.61361'
-						y='-6.61361'
-						width='93.2272'
-						height='93.2273'
-						filterUnits='userSpaceOnUse'
-						color-interpolation-filters='sRGB'>
-						<feFlood
-							flood-opacity='0'
-							result='BackgroundImageFix'
-						/>
-						<feColorMatrix
-							in='SourceAlpha'
-							type='matrix'
-							values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-							result='hardAlpha'
-						/>
-						<feOffset />
-						<feGaussianBlur stdDeviation='5.8267' />
-						<feComposite
-							in2='hardAlpha'
-							operator='out'
-						/>
-						<feColorMatrix
-							type='matrix'
-							values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'
-						/>
-						<feBlend
-							mode='normal'
-							in2='BackgroundImageFix'
-							result='effect1_dropShadow_1523_32137'
-						/>
-						<feBlend
-							mode='normal'
-							in='SourceGraphic'
-							in2='effect1_dropShadow_1523_32137'
-							result='shape'
-						/>
-					</filter>
-					<clipPath id='clip0_1523_32137'>
-						<rect
-							width='80'
-							height='80'
-							rx='40'
-							fill='white'
-						/>
-					</clipPath>
-					<clipPath id='clip1_1523_32137'>
-						<rect
-							x='5.03979'
-							y='5.03979'
-							width='69.9205'
-							height='69.9205'
-							rx='34.9602'
-							fill='white'
-						/>
-					</clipPath>
-				</defs>
-			</svg>
-		</div>
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			width={width ?? '52'}
+			height={height ?? '52'}
+			viewBox='0 0 52 52'
+			fill='none'>
+			<path
+				fillRule='evenodd'
+				clipRule='evenodd'
+				d='M5.77666 21.1537C4.7613 20.1383 4.7613 18.4921 5.77666 17.4768C8.43242 14.821 11.5853 12.7143 15.0552 11.277C18.5251 9.83974 22.2442 9.09998 25.9999 9.09998C29.7557 9.09998 33.4747 9.83974 36.9447 11.277C40.4145 12.7143 43.5674 14.821 46.2232 17.4768C47.2385 18.4921 47.2385 20.1383 46.2232 21.1537C45.2077 22.169 43.5616 22.169 42.5463 21.1537C40.3733 18.9808 37.7937 17.2572 34.9546 16.0812C32.1157 14.9053 29.0728 14.3 25.9999 14.3C22.927 14.3 19.8841 14.9053 17.0451 16.0812C14.2061 17.2572 11.6265 18.9808 9.45361 21.1537C8.43824 22.169 6.79203 22.169 5.77666 21.1537ZM14.2996 30.977C13.2843 29.9616 13.2843 28.3154 14.2996 27.3C15.8362 25.7635 17.6602 24.5448 19.6677 23.7133C21.6751 22.8817 23.8268 22.4537 25.9997 22.4537C28.1727 22.4537 30.3243 22.8817 32.3318 23.7133C34.3392 24.5448 36.1633 25.7635 37.6997 27.3C38.7152 28.3154 38.7152 29.9616 37.6997 30.977C36.6844 31.9923 35.0382 31.9923 34.0228 30.977C32.9692 29.9234 31.7184 29.0876 30.3419 28.5174C28.9652 27.9472 27.4898 27.6537 25.9997 27.6537C24.5097 27.6537 23.0343 27.9472 21.6576 28.5174C20.281 29.0876 19.0302 29.9234 17.9766 30.977C16.9612 31.9923 15.315 31.9923 14.2996 30.977ZM25.9997 41.6C27.4357 41.6 29.8997 39.1358 29.8997 37.7C29.8997 36.264 27.4357 35.1 25.9997 35.1C24.5639 35.1 22.0997 36.264 22.0997 37.7C22.0997 39.1358 24.5639 41.6 25.9997 41.6Z'
+				fill={fill ?? '#262626'}
+			/>
+		</svg>
 	);
 }
