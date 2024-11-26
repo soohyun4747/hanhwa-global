@@ -26,7 +26,7 @@ export function TimeHalfCircle({
 	}
 
 	return (
-		<div className='flex flex-col items-center relative mt-[60px]'>
+		<div className='flex flex-col items-center relative mt-[50px]'>
 			<UnionMask />
 			<div
 				style={{
