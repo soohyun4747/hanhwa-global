@@ -1,5 +1,5 @@
 import { Check } from 'icons/Check';
-import { useEffect } from 'react';
+import { CSSProperties } from 'react';
 
 export interface MenuItem {
 	label: string;
@@ -9,13 +9,14 @@ export interface MenuItem {
 
 interface DropdownMenuProps {
 	lists: MenuItem[][];
-	className?: string;
+	style?: CSSProperties;
 }
 
 export function DropdownMenu(props: DropdownMenuProps) {
 	return (
 		<div
-			className={`flex flex-col p-[20px] gap-[20px] rounded-[12px] border-2 border-gray-100 bg-white shadow-dropdown w-max ${props.className}`}>
+			style={props.style}
+			className={`flex flex-col p-[20px] gap-[20px] rounded-[12px] border-2 border-gray-100 bg-white shadow-dropdown w-max`}>
 			{props.lists.map((list, i) => (
 				<div className='flex flex-col gap-[20px]'>
 					{list.map((item) => (
@@ -36,7 +37,12 @@ export function DropdownMenu(props: DropdownMenuProps) {
 								}`}>
 								{item.label}
 							</div>
-							{item.selected && <Check width={26} height={26} />}
+							{item.selected && (
+								<Check
+									width={26}
+									height={26}
+								/>
+							)}
 						</div>
 					))}
 					{i !== props.lists.length - 1 && (

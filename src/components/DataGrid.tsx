@@ -8,12 +8,11 @@ import {
 import { UpdownArrows } from 'icons/UpDownArrows';
 import { Dropdown } from './Dropdown';
 
-interface DataGridHeader {
+export interface DataGridHeader {
 	field: string;
 	headerName: string;
 	className?: string;
-	icon?: JSX.Element;
-	onClick?: (row: any) => void;
+	render?: (value: any, row: any) => React.ReactNode;
 }
 
 interface DataGridProps {
@@ -151,15 +150,11 @@ export function DataGrid(props: DataGridProps) {
 								)}
 								{props.columns.map((col, j) => (
 									<td
-										onClick={() =>
-											col.onClick && col.onClick(row)
-										}
 										key={j}
-										className={`py-[40px] font-medium items-center justify-between ${
-											col.icon && 'flex'
-										}`}>
-										{row[col.field]}
-										{col.icon}
+										className={`py-[40px] font-medium`}>
+										{col.render
+											? col.render(row[col.field], row)
+											: row[col.field]}
 									</td>
 								))}
 							</tr>

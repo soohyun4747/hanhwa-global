@@ -1,15 +1,17 @@
 import { More } from 'icons/More';
-import { useEffect, useState } from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 import { DropdownMenu, MenuItem } from './DropdownMenu';
 
 export function Dropdown({
 	menuList,
 	id,
 	element,
+	menuStyle,
 }: {
 	menuList: MenuItem[][];
 	id?: string;
 	element: JSX.Element;
+	menuStyle?: CSSProperties;
 }) {
 	const [open, setOpen] = useState<boolean>(false);
 
@@ -42,7 +44,13 @@ export function Dropdown({
 			{open && (
 				<DropdownMenu
 					lists={menuList}
-					className='absolute top-[54px] right-[-4px] z-[1]'
+					style={{
+						position: 'absolute',
+						top: -54,
+						right: -4,
+						zIndex: 1,
+						...menuStyle,
+					}}
 				/>
 			)}
 		</div>

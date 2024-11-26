@@ -3,14 +3,16 @@ import { useState } from 'react';
 import { GeneralTemplate } from './GeneralTemplate';
 import { DeviceTemplate } from './DeviceTemplate';
 import { NetworkTemplate } from './NetworkTemplate';
-import { UserAuthority } from './UserAuthority';
+import { UserAuthorityTemplate } from './UserAuthorityTemplate';
+import { CalibrationTemplate } from './CalibrationTemplate';
 
 const settingTabs = [
 	<GeneralTemplate />,
 	<DeviceTemplate />,
 	<NetworkTemplate />,
 	<></>,
-	<UserAuthority/>
+	<UserAuthorityTemplate/>,
+	<CalibrationTemplate/>
 ];
 
 const SettingTab = ({ idx }: { idx: number }) => settingTabs[idx];

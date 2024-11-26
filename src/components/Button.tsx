@@ -1,14 +1,19 @@
 export const buttonColor = {
 	white: 'white',
 	black: 'black',
+	red: 'red',
 } as const;
 
 export type ButtonColor = (typeof buttonColor)[keyof typeof buttonColor];
 
 export const buttonColorStyle = {
-	white: 'border-gray-100 text-gray-700',
-	black: 'border-gray-800 text-white bg-gray-800',
+	white: 'border-2 border-gray-100 text-gray-700 bg-white',
+	black: 'border-2 border-gray-800 text-white bg-gray-800',
+	red: 'border-2 border-status-error text-status-error bg-white',
 };
+
+export const buttonDisabledStyle =
+	'border border-gray-100 bg-gray-50 text-gray-400';
 
 export function Button({
 	label,
