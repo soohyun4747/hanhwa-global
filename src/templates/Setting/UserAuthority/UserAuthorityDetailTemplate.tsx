@@ -32,8 +32,7 @@ export function UserAuthorityDetailTemplate({
 	const [companyInput, setCompanyInput] = useState<string>('Hanhwa');
 	const [level, setLevel] = useState<UserLevel>(user.level);
 	const [levelInput, setLevelInput] = useState<UserLevel>(user.level);
-	const [RFIDCard, setRFIDCard] = useState<boolean>(false);
-	const [password, setPassword] = useState<string>('');
+	const [RFIDCard, setRFIDCard] = useState<boolean>(true);
 	const [RFIDRegisterModal, setRFIDRegisterModal] = useState<boolean>(false);
 	const [RFIDDeleteModal, setRFIDDeleteModal] = useState<boolean>(false);
 	const [toastMessage, setToastMessage] = useState<string>('');
@@ -217,7 +216,7 @@ export function UserAuthorityDetailTemplate({
 			{RFIDDeleteModal && (
 				<Modal
 					title={'Delete RFID Card'}
-					description={`Are you sure you want to\ndelete the RFID card?`}
+					description={`Are you sure you want to delete the RFID\ncard?`}
 					secondBtn={{
 						label: 'Delete',
 						color: 'black',
@@ -234,7 +233,7 @@ export function UserAuthorityDetailTemplate({
 						color: 'black',
 					}}
 					close={() => setRFIDRegisterModal(false)}
-					contentRight={<TimeCircle time={0} />}
+					content={<TimeCircle time={0} />}
 				/>
 			)}
 			{userDeleteModal && (

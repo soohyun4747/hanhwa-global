@@ -61,15 +61,15 @@ class Item extends React.Component<ItemProps> {
 						<div className='font-semibold'>{item.content}</div>
 					</div>
 					<div
-						onTouchStart={(e: any) => {
+						onTouchStart={(e) => {
 							disableScroll();
 							onTouchStart(e);
 						}}
-						onMouseDown={(e: any) => {
+						onMouseDown={(e) => {
 							disableScroll();
 							onMouseDown(e);
 						}}
-						onTouchEnd={(e: any) => {
+						onTouchEnd={() => {
 							enableScroll();
 						}}
 						onMouseUp={() => {

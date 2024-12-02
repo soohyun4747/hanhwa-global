@@ -22,14 +22,14 @@ export function ResetPasswordModal({ close }: { close: () => void }) {
 			title={'Reset password'}
 			description={`Please enter informations below to reset your password.`}
 			secondBtn={{
-				label: 'Delete',
+				label: 'Reset',
 				color: 'black',
 			}}
 			content={
-				<div className='flex items-end gap-[40px]'>
-					<div className='flex flex-col gap-[40px]'>
+				<div className='flex items-end gap-[20px] pt-[20px]'>
+					<div className='flex flex-col gap-[32px]'>
 						<TextfieldPassword
-							className='h-[96px] w-[640px]'
+							className='h-[92px] w-[640px]'
 							value={currentPassword}
 							placeholder='Enter a current password'
 							label='Current Password'
@@ -37,7 +37,7 @@ export function ResetPasswordModal({ close }: { close: () => void }) {
 							onClick={() => setActivatedField('current')}
 						/>
 						<TextfieldPassword
-							className='h-[96px] w-[640px]'
+							className='h-[92px] w-[640px]'
 							value={newPassword}
 							placeholder='Enter a new password'
 							label='New Password'
@@ -45,7 +45,7 @@ export function ResetPasswordModal({ close }: { close: () => void }) {
 							onClick={() => setActivatedField('new')}
 						/>
 						<TextfieldPassword
-							className='h-[96px] w-[640px]'
+							className='h-[92px] w-[640px]'
 							value={confirmNewPassword}
 							placeholder='Enter a new password once again'
 							label='Confirm New Password'
