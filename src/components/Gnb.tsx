@@ -6,11 +6,11 @@ import { LoRa } from 'icons/LoRa';
 import { Setting } from 'icons/Setting';
 import { SettingsEthernet } from 'icons/SettingsEthernet';
 import { Wifi } from 'icons/Wifi';
-import { useRecoilState } from 'recoil';
-import { isSettingState } from 'recoil/isSettingState';
+import { useIsSettingStore } from 'stores/isSettingStore';
 
 export function Gnb() {
-	const [isSetting, setIsSetting] = useRecoilState(isSettingState);
+	const isSetting = useIsSettingStore((state) => state.isSetting);
+	const changeSetting = useIsSettingStore((state) => state.changeSetting);
 
 	return (
 		<div className='bg-gray-50 border-r border-gray-200 pt-[40px] pb-[60px] min-w-[160px] flex flex-col justify-between items-center h-[100vh]'>
@@ -40,7 +40,7 @@ export function Gnb() {
 					<LoRa />
 				</div>
 				<div
-					onClick={() => setIsSetting((prev) => !prev)}
+					onClick={changeSetting}
 					className={`flex ${
 						isSetting ? 'bg-white' : 'bg-gray-600'
 					} border rounded-full w-[100px] h-[100px] items-center justify-center mt-[8px]`}>
