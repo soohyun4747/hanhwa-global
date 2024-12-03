@@ -27,15 +27,7 @@ export function CalibrationTemplate() {
 	);
 
 	return (
-		<CommonTemplate
-			title={'Calibration'}
-			leftElements={[
-				<Button label={'Edit'} />,
-				<Button
-					label={'Delete'}
-					color='black'
-				/>,
-			]}>
+		<CommonTemplate title={'Calibration'}>
 			<GrayBox>
 				<div className='flex flex-col items-center'>
 					<div className='text-center flex flex-col items-center gap-[16px]'>

@@ -29,7 +29,7 @@ export function FloatingBar({
 			<div className='font-bold text-[28px]'>Blaster</div>
 			<div className='h-[24px] border border-gray-200 w-0' />
 			<div className='font-semibold text-[28px]'>
-				A fox jumping on a sleeping dog
+				Blaster ID
 			</div>
 			<div className='h-[24px] border border-gray-200 w-0' />
 			<div className='flex gap-[10px] items-center'>

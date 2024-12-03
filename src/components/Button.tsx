@@ -19,18 +19,22 @@ export function Button({
 	label,
 	icon,
 	color,
+	disabled,
 	onClick,
 }: {
 	label: string;
 	icon?: JSX.Element;
 	color?: ButtonColor;
+	disabled?: boolean;
 	onClick?: () => void;
 }) {
 	return (
 		<div
-			onClick={onClick}
+			onClick={disabled ? undefined : onClick}
 			className={`px-[36px] py-[16px] flex gap-[12px] rounded-full items-center border-2 w-fit ${
-				buttonColorStyle[color ?? buttonColor.white]
+				disabled
+					? buttonDisabledStyle
+					: buttonColorStyle[color ?? buttonColor.white]
 			}`}>
 			<div className='text-[26px] font-semibold leading-[32px]'>
 				{label}

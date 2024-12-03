@@ -55,6 +55,10 @@ const getLevelColor = (levelVal: UserLevel): string => {
 
 export function UserAuthorityTemplate() {
 	const [detailUser, setDetailUser] = useState<any>();
+	const [isEdit, setIsEdit] = useState<boolean>(false);
+	const [selectedIdList, setSelectedIdList] = useState<(number | string)[]>(
+		[]
+	);
 
 	const userAutorityColumnData: DataGridHeader[] = [
 		{
@@ -106,17 +110,39 @@ export function UserAuthorityTemplate() {
 			) : (
 				<CommonTemplate
 					title={'User Authority'}
-					leftElements={[
-						<Button label={'Edit'} />,
-						<Button
-							label={'Add User'}
-							color='black'
-						/>,
-					]}>
+					leftElements={
+						isEdit
+							? [
+									<Button
+										label={'Cancel'}
+										onClick={() => setIsEdit(false)}
+									/>,
+									<Button
+										label={'Delete'}
+										color='red'
+										disabled={
+											selectedIdList.length ? false : true
+										}
+									/>,
+							  ]
+							: [
+									<Button
+										label={'Edit'}
+										onClick={() => setIsEdit(true)}
+									/>,
+									<Button
+										label={'Add User'}
+										color='black'
+									/>,
+							  ]
+					}>
 					<DataGrid
 						title='Registered Authorities'
 						columns={userAutorityColumnData}
 						rows={userAuthorityRowData}
+						edit={isEdit}
+						selectedIdList={selectedIdList}
+						setSelectedIdList={setSelectedIdList}
 					/>
 				</CommonTemplate>
 			)}

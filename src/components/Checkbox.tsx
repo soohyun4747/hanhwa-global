@@ -21,13 +21,21 @@ const checkboxValueStyles = {
 	},
 };
 
-export const getCheckValue = (value: CheckboxValue) => {
-	if (value === checkboxValue.unSelected) {
+export const getCheckValue = (value: boolean) => {
+	if (value === true) {
 		return checkboxValue.selected;
 	} else {
 		return checkboxValue.unSelected;
 	}
 };
+
+// export const getCheckValue = (value: CheckboxValue) => {
+// 	if (value === checkboxValue.unSelected) {
+// 		return checkboxValue.selected;
+// 	} else {
+// 		return checkboxValue.unSelected;
+// 	}
+// };
 
 export function Checkbox({
 	value = 0,

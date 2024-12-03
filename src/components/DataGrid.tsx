@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import {
 	Checkbox,
 	checkboxValue,
@@ -20,37 +20,44 @@ interface DataGridProps {
 	rows: any[];
 	edit?: boolean;
 	title?: string;
+	selectedIdList?: (string | number)[];
+	setSelectedIdList?: Dispatch<SetStateAction<(string | number)[]>>;
 }
 
 export function DataGrid(props: DataGridProps) {
 	const [topCheckValue, setTopCheckValue] = useState<CheckboxValue>(
 		checkboxValue.unSelected
 	);
-	const [checkValueList, setCheckValueList] = useState<CheckboxValue[]>([]);
 	const [orderCol, setOrderCol] = useState<DataGridHeader>();
 	const [orderedRows, setOrderedRows] = useState<any[]>([]);
 
 	useEffect(() => {
-		setCheckValueList(
-			new Array(props.rows.length).fill(checkboxValue.unSelected)
-		);
 		setOrderedRows(props.rows);
 	}, [props.rows]);
 
 	useEffect(() => {
-		setTopCheckValue(getTopCheckValue());
-	}, [checkValueList]);
-
-	const getTopCheckValue = () => {
-		if (checkValueList.every((val) => val === checkboxValue.selected)) {
-			return checkboxValue.selected;
-		} else {
-			if (checkValueList.some((val) => val === checkboxValue.selected)) {
-				return checkboxValue.inDeterminate;
-			} else {
-				return checkboxValue.unSelected;
-			}
+		if (props.selectedIdList) {
+			setTopCheckValue(
+				getTopCheckValue(props.selectedIdList, props.rows)
+			);
 		}
+	}, [props.selectedIdList, props.rows]);
+
+	useEffect(() => {
+		setOrderCol(props.columns[0]);
+	}, [props.columns]);
+
+	const getTopCheckValue = (
+		selectedIdList: (number | string)[],
+		rows: any[]
+	) => {
+		if (selectedIdList.length === 0) {
+			return checkboxValue.unSelected;
+		}
+		if (selectedIdList.length === rows.length) {
+			return checkboxValue.selected;
+		}
+		return checkboxValue.inDeterminate;
 	};
 
 	const onClickTopCheckbox = () => {
@@ -59,15 +66,37 @@ export function DataGrid(props: DataGridProps) {
 			topCheckValue === checkboxValue.inDeterminate
 		) {
 			setTopCheckValue(checkboxValue.selected);
-			setCheckValueList((prev) =>
-				new Array(prev.length).fill(checkboxValue.selected)
-			);
+			if (props.setSelectedIdList) {
+				props.setSelectedIdList(props.rows.map((row) => row.id));
+			}
 		} else {
 			setTopCheckValue(checkboxValue.unSelected);
-			setCheckValueList((prev) =>
-				new Array(prev.length).fill(checkboxValue.unSelected)
-			);
+
+			if (props.setSelectedIdList) {
+				props.setSelectedIdList([]);
+			}
 		}
+	};
+
+	const onClickRowCheckbox = (row: any) => {
+		if (props.setSelectedIdList) {
+			props.setSelectedIdList((prev) => {
+				const idx = prev.findIndex((id) => row.id === id);
+				if (idx === -1) {
+					prev.push(row.id);
+				} else {
+					prev.splice(idx, 1);
+				}
+				return [...prev];
+			});
+		}
+	};
+
+	const getCheckboxValue = (row: any) => {
+		if (props.selectedIdList) {
+			return getCheckValue(props.selectedIdList?.includes(row.id));
+		}
+		return checkboxValue.unSelected;
 	};
 
 	return (
@@ -136,14 +165,9 @@ export function DataGrid(props: DataGridProps) {
 								{props.edit && (
 									<td className='py-[40px]'>
 										<Checkbox
-											value={checkValueList[i]}
+											value={getCheckboxValue(row)}
 											onClick={() =>
-												setCheckValueList((prev) => {
-													prev[i] = getCheckValue(
-														prev[i]
-													);
-													return [...prev];
-												})
+												onClickRowCheckbox(row)
 											}
 										/>
 									</td>

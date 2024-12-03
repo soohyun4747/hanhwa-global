@@ -40,7 +40,7 @@ export function Snb({
 	setMenuIdx: React.Dispatch<React.SetStateAction<number>>;
 }) {
 	return (
-		<div className='bg-[#FBFBFB] w-[400px] flex flex-col pt-[70px] gap-[80px] h-[100vh] border-r border-gray-200'>
+		<div className='bg-[#FBFBFB] min-w-[400px] flex flex-col pt-[70px] gap-[80px] h-[100vh] border-r border-gray-200'>
 			<div className='pl-[40px] text-[40px] font-bold text-gray-800'>
 				Setting
 			</div>
