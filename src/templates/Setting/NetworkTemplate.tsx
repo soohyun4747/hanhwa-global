@@ -40,25 +40,13 @@ const networkList = [
 	},
 	{
 		type: networkType.wifiHalow,
-		icon: (
-			<HaLow
-				fill='white'
-				width={52}
-				height={52}
-			/>
-		),
+		icon: <HaLow fill='white' />,
 		subTitle: 'Wifi HaLow',
 		title: 'TP-Link_D5E4_5G',
 	},
 	{
 		type: networkType.wifiLora,
-		icon: (
-			<LoRa
-				fill='white'
-				width={52}
-				height={52}
-			/>
-		),
+		icon: <LoRa fill='white' />,
 		subTitle: 'Wifi LoRa',
 		title: 'TP-Link_D5E4_5G',
 	},

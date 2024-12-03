@@ -17,6 +17,15 @@ import { ToastMessage } from 'components/ToastMessage';
 import { Check } from 'icons/Check';
 import { Minus } from 'icons/Minus';
 import { ResetPasswordModal } from 'components/ResetPasswordModal';
+import { Change } from 'icons/Change';
+import { DropdownField } from 'components/DropdownField';
+
+const toastMessages = {
+	cardRegistered: 'RFID card registration has been completed',
+	cardDeleted: 'RFID card has been deleted',
+	cardChanged: 'RFID card registration has been changed',
+	passwordChanged: 'Password change has been completed',
+};
 
 export function UserAuthorityDetailTemplate({
 	user,
@@ -35,10 +44,11 @@ export function UserAuthorityDetailTemplate({
 	const [RFIDCard, setRFIDCard] = useState<boolean>(true);
 	const [RFIDRegisterModal, setRFIDRegisterModal] = useState<boolean>(false);
 	const [RFIDDeleteModal, setRFIDDeleteModal] = useState<boolean>(false);
-	const [toastMessage, setToastMessage] = useState<string>('');
+	const [toastMessage, setToastMessage] = useState<string>(); //상단에 있는 toastMessages를 사용하시면 됩니다
 	const [userDeleteModal, setUserDeleteModal] = useState<boolean>(false);
 	const [resetPasswordModal, setResetPasswordModal] =
 		useState<boolean>(false);
+	const [RFIDChangeModal, setRFIDChangeModal] = useState<boolean>(false);
 
 	return (
 		<>
@@ -47,17 +57,17 @@ export function UserAuthorityDetailTemplate({
 					edit
 						? [
 								<Button
-									label={'Cancel'}
+									children={'Cancel'}
 									onClick={() => setEdit(false)}
 								/>,
 								<Button
-									label={'Save'}
+									children={'Save'}
 									color='black'
 								/>,
 						  ]
 						: [
 								<Button
-									label={'Edit'}
+									children={'Edit'}
 									onClick={() => setEdit(true)}
 								/>,
 						  ]
@@ -93,7 +103,7 @@ export function UserAuthorityDetailTemplate({
 												<div className='text-gray-500 text-[24px] font-medium'>
 													Level
 												</div>
-												<Dropdown
+												<DropdownField
 													menuList={[
 														Object.values(
 															userLevel
@@ -109,18 +119,7 @@ export function UserAuthorityDetailTemplate({
 														})),
 													]}
 													id='level-dropdown'
-													element={
-														<div
-															id='level-dropdown'
-															className='h-[92px] rounded-[12px] border border-gray-200 w-full p-[28px] bg-white flex justify-between items-center text-[28px] font-semibold leading-[130%]'>
-															{levelInput}
-															<ChevronBottom id='level-dropdown' />
-														</div>
-													}
-													menuStyle={{
-														width: '-webkit-fill-available',
-														top: 108,
-													}}
+													value={levelInput}
 												/>
 											</div>
 											<div className='flex flex-1 flex-col gap-[16px]'>
@@ -128,21 +127,44 @@ export function UserAuthorityDetailTemplate({
 													RFID Card
 												</div>
 												{RFIDCard ? (
-													<ButtonMedium
-														onClick={() =>
-															setRFIDDeleteModal(
-																true
-															)
-														}
-														color={
-															buttonColor.black
-														}
-														className='h-[92px]'>
-														<>
-															<Minus />
-															Register
-														</>
-													</ButtonMedium>
+													<div className='flex gap-[16px]'>
+														<ButtonMedium
+															onClick={() =>
+																setRFIDChangeModal(
+																	true
+																)
+															}
+															color={
+																buttonColor.black
+															}
+															style={{
+																height: 92,
+																flex: 1,
+															}}>
+															<>
+																<Change />
+																Change
+															</>
+														</ButtonMedium>
+														<ButtonMedium
+															onClick={() =>
+																setRFIDDeleteModal(
+																	true
+																)
+															}
+															color={
+																buttonColor.black
+															}
+															style={{
+																height: 92,
+																flex: 1,
+															}}>
+															<>
+																<Minus />
+																Delete
+															</>
+														</ButtonMedium>
+													</div>
 												) : (
 													<ButtonMedium
 														onClick={() =>
@@ -153,7 +175,7 @@ export function UserAuthorityDetailTemplate({
 														color={
 															buttonColor.black
 														}
-														className='h-[92px]'>
+														style={{ height: 92 }}>
 														<>
 															<Plus />
 															Register
@@ -168,7 +190,7 @@ export function UserAuthorityDetailTemplate({
 													Password
 												</div>
 												<ButtonMedium
-													className='h-[92px]'
+													style={{ height: 92 }}
 													onClick={() =>
 														setResetPasswordModal(
 															true
@@ -183,7 +205,7 @@ export function UserAuthorityDetailTemplate({
 								</GrayBox>
 							</div>
 							<ButtonMedium
-								className='h-[80px]'
+								style={{ height: 80 }}
 								color={buttonColor.red}
 								onClick={() => setUserDeleteModal(true)}>
 								Delete User
@@ -218,10 +240,13 @@ export function UserAuthorityDetailTemplate({
 					title={'Delete RFID Card'}
 					description={`Are you sure you want to delete the RFID\ncard?`}
 					secondBtn={{
-						label: 'Delete',
+						children: 'Delete',
 						color: 'black',
 					}}
-					close={() => setRFIDDeleteModal(false)}
+					firstBtn={{
+						children: 'Close',
+						onClick: () => setRFIDDeleteModal(false),
+					}}
 				/>
 			)}
 			{RFIDRegisterModal && (
@@ -229,11 +254,28 @@ export function UserAuthorityDetailTemplate({
 					title={'Register RFID Card'}
 					description={`Please contact the card to the NFC\nrecognition area.`}
 					secondBtn={{
-						label: 'Delete',
+						children: 'Delete',
 						color: 'black',
 					}}
-					close={() => setRFIDRegisterModal(false)}
+					firstBtn={{
+						children: 'Close',
+						onClick: () => setRFIDRegisterModal(false),
+					}}
 					content={<TimeCircle time={0} />}
+				/>
+			)}
+			{RFIDChangeModal && (
+				<Modal
+					title={'Change Card'}
+					description={`Are you sure you want to change the\ncard?`}
+					secondBtn={{
+						children: 'Delete',
+						color: 'black',
+					}}
+					firstBtn={{
+						children: 'Close',
+						onClick: () => setRFIDChangeModal(false),
+					}}
 				/>
 			)}
 			{userDeleteModal && (
@@ -241,10 +283,13 @@ export function UserAuthorityDetailTemplate({
 					title={'Delete User'}
 					description={`Are you sure you want to delete the\nuser?`}
 					secondBtn={{
-						label: 'Delete',
+						children: 'Delete',
 						color: 'black',
 					}}
-					close={() => setUserDeleteModal(false)}
+					firstBtn={{
+						children: 'Close',
+						onClick: () => setUserDeleteModal(false),
+					}}
 				/>
 			)}
 			{resetPasswordModal && (

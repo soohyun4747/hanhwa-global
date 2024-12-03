@@ -21,7 +21,7 @@ export function CommonTemplate({
 				<div className='h-0 w-full border border-gray-400' />
 			</div>
 			{children}
-			<div className='w-[calc(100%-560px)] h-[100px] absolute top-0 bg-gradient-to-b from-white to-white/0' />
+			<div className='w-[calc(100%-600px)] h-[100px] absolute top-0 bg-gradient-to-b from-white to-white/0' />
 		</div>
 	);
 }

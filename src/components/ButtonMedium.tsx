@@ -1,32 +1,21 @@
 import {
 	buttonColor,
-	ButtonColor,
 	buttonColorStyle,
 	buttonDisabledStyle,
+	ButtonProps,
 } from './Button';
 
-export function ButtonMedium({
-	children,
-	color,
-	className,
-	disabled,
-	onClick,
-}: {
-	children: JSX.Element | string;
-	color?: ButtonColor;
-	className?: string;
-	disabled?: boolean;
-	onClick?: () => void;
-}) {
+export function ButtonMedium(props: ButtonProps) {
 	return (
 		<div
-			onClick={disabled ? undefined : onClick}
+			style={props.style}
+			onClick={props.disabled ? undefined : props.onClick}
 			className={`justify-center text-[28px] font-semibold leading-[normal] p-[28px] self-stretch rounded-[12px] flex gap-[12px] items-center ${
-				disabled
+				props.disabled
 					? buttonDisabledStyle
-					: buttonColorStyle[color ?? buttonColor.white]
-			} ${className}`}>
-			{children}
+					: buttonColorStyle[props.color ?? buttonColor.white]
+			}`}>
+			{props.children}
 		</div>
 	);
 }

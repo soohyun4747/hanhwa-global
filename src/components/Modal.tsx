@@ -1,18 +1,18 @@
-import { ButtonColor } from './Button';
+import { ButtonColor, ButtonProps } from './Button';
 import { ButtonMedium } from './ButtonMedium';
 
 export function Modal({
 	title,
 	description,
 	content,
+	firstBtn,
 	secondBtn,
-	close,
 }: {
 	title: string;
 	description: string;
 	content?: JSX.Element;
-	secondBtn: { label: string; onClick?: () => void; color?: ButtonColor };
-	close: () => void;
+	firstBtn: ButtonProps;
+	secondBtn?: ButtonProps;
 }) {
 	return (
 		<div className='absolute top-0 left-0 w-[100vw] h-[100vh] bg-black/40 flex items-center justify-center z-[2]'>
@@ -32,17 +32,20 @@ export function Modal({
 						)}
 					</div>
 					<div className='flex gap-[20px]'>
-						<ButtonMedium
-							children={'Close'}
-							onClick={close}
-							className='w-full h-[92px]'
-						/>
-						<ButtonMedium
-							children={secondBtn.label}
-							onClick={secondBtn.onClick}
-							color={secondBtn.color}
-							className='w-full h-[92px]'
-						/>
+						{firstBtn && <ButtonMedium
+							children={firstBtn.children}
+							onClick={firstBtn.onClick}
+							color={firstBtn.color}
+							style={{ width: '100%', height: 92 }}
+						/>}
+						{secondBtn && (
+							<ButtonMedium
+								children={secondBtn.children}
+								onClick={secondBtn.onClick}
+								color={secondBtn.color}
+								style={{ width: '100%', height: 92 }}
+							/>
+						)}
 					</div>
 				</div>
 			</div>

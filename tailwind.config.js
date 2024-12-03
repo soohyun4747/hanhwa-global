@@ -10,6 +10,8 @@ module.exports = {
 					'linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%), linear-gradient(261deg, #0066C3 5.7%, #1488F3 102.29%)',
 				'conic-gradient':
 					'conic-gradient(from -90deg, #f69d3c, #FFD1B1 92deg, lightgray 92deg)',
+				'video-gradient':
+					'linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%)',
 			},
 			boxShadow: {
 				home: '0px 0px 20px 0px rgba(0, 0, 0, 0.15)',

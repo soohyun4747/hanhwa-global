@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react';
+
 export const buttonColor = {
 	white: 'white',
 	black: 'black',
@@ -15,31 +17,25 @@ export const buttonColorStyle = {
 export const buttonDisabledStyle =
 	'border border-gray-100 bg-gray-50 text-gray-400';
 
-export function Button({
-	label,
-	icon,
-	color,
-	disabled,
-	onClick,
-}: {
-	label: string;
-	icon?: JSX.Element;
+export interface ButtonProps {
+	children: JSX.Element | string;
 	color?: ButtonColor;
 	disabled?: boolean;
+	style?: CSSProperties;
 	onClick?: () => void;
-}) {
+}
+
+export function Button(props: ButtonProps) {
 	return (
 		<div
-			onClick={disabled ? undefined : onClick}
-			className={`px-[36px] py-[16px] flex gap-[12px] rounded-full items-center border-2 w-fit ${
-				disabled
+			style={props.style}
+			onClick={props.disabled ? undefined : props.onClick}
+			className={`px-[36px] py-[16px] flex gap-[12px] rounded-full items-center border-2 w-fit text-[26px] font-semibold leading-[32px] ${
+				props.disabled
 					? buttonDisabledStyle
-					: buttonColorStyle[color ?? buttonColor.white]
+					: buttonColorStyle[props.color ?? buttonColor.white]
 			}`}>
-			<div className='text-[26px] font-semibold leading-[32px]'>
-				{label}
-			</div>
-			{icon}
+			{props.children}
 		</div>
 	);
 }

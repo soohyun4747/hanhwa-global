@@ -44,7 +44,7 @@ export function DataGrid(props: DataGridProps) {
 	}, [props.selectedIdList, props.rows]);
 
 	useEffect(() => {
-		setOrderCol(props.columns[0]);
+		onSelectOrder(props.columns[0])
 	}, [props.columns]);
 
 	const getTopCheckValue = (
@@ -99,6 +99,13 @@ export function DataGrid(props: DataGridProps) {
 		return checkboxValue.unSelected;
 	};
 
+	const onSelectOrder = (col: DataGridHeader) => {
+		setOrderCol(col);
+		setOrderedRows((prev) => {
+			return sortByField(col.field, prev);
+		});
+	};
+
 	return (
 		<div className='flex flex-col gap-[28px] text-[28px]'>
 			<div className='flex justify-between items-center'>
@@ -115,12 +122,7 @@ export function DataGrid(props: DataGridProps) {
 					menuList={[
 						props.columns.map((col) => ({
 							label: col.headerName,
-							onClick: () => {
-								setOrderCol(col);
-								setOrderedRows((prev) => {
-									return sortByField(col.field, prev);
-								});
-							},
+							onClick: () => onSelectOrder(col),
 							selected: orderCol?.field === col.field,
 						})),
 					]}

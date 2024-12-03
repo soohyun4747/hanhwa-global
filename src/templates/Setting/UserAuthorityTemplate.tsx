@@ -5,6 +5,8 @@ import { DataGrid, DataGridHeader } from 'components/DataGrid';
 import { ChevronRight } from 'icons/ChevronRight';
 import { useState } from 'react';
 import { UserAuthorityDetailTemplate } from './UserAuthority/UserAuthorityDetailTemplate';
+import { ToastMessage } from 'components/ToastMessage';
+import { Check } from 'icons/Check';
 
 const userAuthorityRowData = [
 	{
@@ -53,13 +55,17 @@ const getLevelColor = (levelVal: UserLevel): string => {
 	}
 };
 
+const toastMessages = {
+	userDeleted: 'User has been deleted',
+};
+
 export function UserAuthorityTemplate() {
 	const [detailUser, setDetailUser] = useState<any>();
 	const [isEdit, setIsEdit] = useState<boolean>(false);
 	const [selectedIdList, setSelectedIdList] = useState<(number | string)[]>(
 		[]
 	);
-
+	const [toastMessage, setToastMessage] = useState<string>(); //상단에 있는 toastMessages를 사용하시면 됩니다
 	const userAutorityColumnData: DataGridHeader[] = [
 		{
 			field: 'level',
@@ -114,11 +120,11 @@ export function UserAuthorityTemplate() {
 						isEdit
 							? [
 									<Button
-										label={'Cancel'}
+										children={'Cancel'}
 										onClick={() => setIsEdit(false)}
 									/>,
 									<Button
-										label={'Delete'}
+										children={'Delete'}
 										color='red'
 										disabled={
 											selectedIdList.length ? false : true
@@ -127,11 +133,11 @@ export function UserAuthorityTemplate() {
 							  ]
 							: [
 									<Button
-										label={'Edit'}
+										children={'Edit'}
 										onClick={() => setIsEdit(true)}
 									/>,
 									<Button
-										label={'Add User'}
+										children={'Add User'}
 										color='black'
 									/>,
 							  ]
@@ -145,6 +151,12 @@ export function UserAuthorityTemplate() {
 						setSelectedIdList={setSelectedIdList}
 					/>
 				</CommonTemplate>
+			)}
+			{toastMessage && (
+				<ToastMessage
+					icon={<Check fill='white' />}
+					label={toastMessage}
+				/>
 			)}
 		</>
 	);
